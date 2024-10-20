@@ -1,0 +1,132 @@
+ MongoDB Operations
+
+1.  Create Operation:
+    Create a new database named "library" and switch to it.
+   
+   library> use library  
+ // OUTPUT:   switched to db library //
+
+Create a collection named "books" with fields: title, author, and published_year.
+Insert multiple documents into the "books" collection.
+
+   library>  db.books.insertMany([{title:"writer in madrid",author:"C.J Ssnson",publisheryear:2006},{title:"life is Elsewhere",author:"Khaled Hosseini",publisheryear:2004},{title:"Heads You Lose",author:"Lisa Lutz",publisheryear:2003},{title:"A Himalayan Love Story",author:"Namita Gokale",publisheryear:2007},{title:"Childhood",author:"Maxim Gorky",publisheryear:1982},{title:"Eight Lives",author:"Salman Rushdie",publisheryear:2003}])
+    // OUTPUT:
+    acknowledged: true,
+    insertedIds: {
+    '0': ObjectId('671495a7cd03fbb7f186b01e'),
+    '1': ObjectId('671495a7cd03fbb7f186b01f'),
+    '2': ObjectId('671495a7cd03fbb7f186b020'),
+    '3': ObjectId('671495a7cd03fbb7f186b021'),
+    '4': ObjectId('671495a7cd03fbb7f186b022'),
+    '5': ObjectId('671495a7cd03fbb7f186b023')
+    } //
+
+
+2.  Read Operation:
+   * Retrieve all documents from the "books" collection.
+   
+library> db.books.find()
+
+// OUTPUT:
+[
+  {
+    _id: ObjectId('67149172cd03fbb7f186b01d'),
+    title: 'Retribution Road',
+    auther: 'MaclehosePress',
+    publisheryear: 2017
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b01e'),
+    title: 'writer in madrid',
+    author: 'C.J Ssnson',
+    publisheryear: 2006
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b01f'),
+    title: 'life is Elsewhere',
+    author: 'Khaled Hosseini',
+    publisheryear: 2004
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b020'),
+    title: 'Heads You Lose',
+    author: 'Lisa Lutz',
+    publisheryear: 2003
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b021'),
+    title: 'A Himalayan Love Story',
+    author: 'Namita Gokale',
+    publisheryear: 2007
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b022'),
+    title: 'Childhood',
+    author: 'Maxim Gorky',
+    publisheryear: 1982
+  },
+  {
+    _id: ObjectId('671495a7cd03fbb7f186b023'),
+    title: 'Eight Lives',
+    author: 'Salman Rushdie',
+    publisheryear: 2003
+  }
+
+] //
+
+
+ 3. Update Operation:
+    *Update the published year of the book with year.
+
+   library> db.books.updateOne({title:"Canvas of Life"},{$set:{publisheryear:2024}})
+
+ // OUTPUT:  
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+} 
+//
+
+
+library>  db.books.updateOne({title:"The Art of Being Alone"},{$set:{publisheryear:2007}})
+
+// OUTPUT:  
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+
+}
+//
+
+4.  Delete Operation:
+    *Remove the document with the title  from the "books" collection.
+    
+library> db.books.removeOnedb.books.updateOne({title:"Retribution Road"},{$set:{publisheryear:2017}})
+
+// OUTPUT: 
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+//
+
+library> db.books.removeOnedb.books.updateOne({title:"Being Indian"},{$set:{publisheryear:2008}})
+
+// OUTPUT: 
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+//
